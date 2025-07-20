@@ -10,8 +10,10 @@ import contactRoutes from './routes/contacts.js';
 const app = express();
 let PORT = process.env.PORT || 8000;
 app.use(cors({
-  origin: ['admin-frontend-6zztsg7hm-anandabhijeet1999s-projects.vercel.app'],
-  credentials: true
+  origin: process.env.FRONTEND_URL,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', ]
 }));
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
